@@ -53,8 +53,10 @@
   }
   .hero img{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-    object-position:50% 30%;
-    filter:saturate(0.98) brightness(0.94);
+    object-position:50% 80%;
+    transform-origin:38% 40%;
+    transform:scale(1.12) translateX(4%);
+    filter:saturate(1.1) brightness(0.97);
   }
   .hero::after{
     content:'';
@@ -292,6 +294,34 @@
     section{ padding:64px 0;}
     .invite{ padding:40px 24px;}
   }
+
+  /* ---- Mer farge ---- */
+  :root{ --blush:#F4DCD3; --sage:#DCE6D5; --sky:#DCE8EE; --sun:#F6E3B4; --rose:#C4584A; }
+  @media (orientation:portrait){ .hero img{ transform:none; object-position:38% 50%; } }
+  body{ background:#FFF9EF; }
+  .kicker{ color:var(--rose); font-weight:600; }
+  h2.section-title::after{ content:''; display:block; width:64px; height:3px; margin:16px auto 0; background:linear-gradient(90deg,var(--rose),var(--gold),var(--forest-light)); border-radius:2px; }
+  .invite{ background:linear-gradient(135deg,var(--blush) 0%,var(--sun) 100%); border-color:rgba(196,88,74,0.3); }
+  .invite p.names{ color:var(--rose); }
+  .grid3{ background:transparent; border:none; gap:14px; }
+  .cell{ border-radius:6px; border:1px solid var(--line); }
+  .cell:nth-child(1){ background:var(--blush); }
+  .cell:nth-child(2){ background:var(--sage); }
+  .cell:nth-child(3){ background:var(--sky); }
+  .cell .num{ color:var(--rose); }
+  #sted{ background:var(--sage); }
+  #fredagskveld{ background:var(--sun); }
+  #overnatting{ background:var(--sky); }
+  #antrekk{ background:var(--blush); }
+  .dress{ background:#FFF9EF; border-color:rgba(196,88,74,0.3); border-radius:6px; }
+  .btn{ background:var(--rose); border-radius:4px; }
+  .btn:hover{ background:var(--barn-dark); }
+  .hotel-card{ border-radius:8px; }
+  .note-strip{ color:#3B4A3A; }
+  .map-frame{ border-radius:8px; border:3px solid #FFF9EF; box-shadow:0 6px 24px rgba(60,50,30,0.15); }
+  footer{ background:var(--forest); border-top:6px solid var(--rose); }
+  footer .heart{ color:var(--sun); }
+  footer p{ color:#D5DCCB; }
 </style>
 </head>
 <body>
