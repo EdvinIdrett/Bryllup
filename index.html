@@ -319,6 +319,8 @@
   .hotel-card{ border-radius:8px; }
   .note-strip{ color:#3B4A3A; }
   .map-frame{ border-radius:8px; border:3px solid #FFF9EF; box-shadow:0 6px 24px rgba(60,50,30,0.15); }
+  #onskeliste{ background:var(--sage); }
+  .btn.soon{ background:#8A8367; cursor:default; pointer-events:none; }
   footer{ background:var(--forest); border-top:6px solid var(--rose); }
   footer .heart{ color:var(--sun); }
   footer p{ color:#D5DCCB; }
@@ -442,6 +444,18 @@
     <div class="dress" style="margin-top:36px;">
       <h3>Pent antrekk</h3>
       <p>Vi feirer på gården, ute i det grønne — så velg pent antrekk du er komfortabel i. Det blir gress og gårdstun, så unngå de aller høyeste hælene.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tight" id="onskeliste">
+  <div class="wrap">
+    <div class="kicker">Gaver</div>
+    <h2 class="section-title">Ønskeliste</h2>
+    <p class="lede">Din tilstedeværelse er den fineste gaven. Skulle du likevel ønske å gi noe, har vi samlet noen ønsker i en liste.</p>
+    <div style="text-align:center;">
+      <!-- Når ønskelisten er klar: bytt href="#" med lenken, og fjern class "soon" -->
+      <a class="btn soon" id="wishlist-link" href="#onskeliste" aria-disabled="true">Lenke kommer snart</a>
     </div>
   </div>
 </section>
