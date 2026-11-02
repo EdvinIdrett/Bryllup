@@ -337,6 +337,37 @@
   .gallery img.wide{ grid-column:1 / -1; aspect-ratio:16/8; object-position:50% 40%; }
   #oss{ background:var(--blush); }
   @media (max-width:640px){ .gallery{ grid-template-columns:1fr 1fr; } }
+
+  /* ---- Mer farge + liv ---- */
+  :root{ --teal:#3F8F8B; --coral:#E8836B; --plum:#8E4A6B; }
+  .countdown{ margin-top:18px; display:inline-block; padding:8px 20px; border-radius:30px; background:var(--rose); color:#fff; font-weight:600; letter-spacing:0.05em; font-size:15px; text-shadow:none; box-shadow:0 4px 16px rgba(0,0,0,0.3); }
+  .countdown:empty{ display:none; }
+  .hero h1 em{ color:#F6C6B8; }
+  .cell{ border-top:5px solid var(--rose); }
+  .cell:nth-child(2){ border-top-color:var(--forest-light); }
+  .cell:nth-child(3){ border-top-color:var(--teal); }
+  .photoband{ gap:0; border-top:6px solid var(--rose); border-bottom:6px solid var(--teal); }
+  .kicker::before, .kicker::after{ content:'✦'; color:var(--gold); margin:0 10px; font-size:10px; vertical-align:middle; }
+  .hotel-card{ background:linear-gradient(135deg,var(--forest) 0%,var(--teal) 100%); }
+  .dress{ border-top:5px solid var(--plum); }
+  #oss{ background:var(--blush); }
+  #bingo{ background:linear-gradient(180deg,var(--sun) 0%,var(--blush) 100%); }
+  #kalender{ background:var(--sky); }
+  #onskeliste{ background:var(--sage); }
+  footer{ background:linear-gradient(135deg,var(--forest) 0%,var(--plum) 100%); }
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  /* Bingo */
+  .bingo{ display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; max-width:640px; margin:0 auto; }
+  .bingo button.sq{ aspect-ratio:1; border:2px solid rgba(44,42,36,0.15); border-radius:10px; background:#FFF9EF; color:var(--ink); font:inherit; font-size:12px; line-height:1.25; padding:6px; cursor:pointer; display:flex; align-items:center; justify-content:center; text-align:center; transition:transform .15s, background .2s; }
+  .bingo button.sq:hover{ transform:scale(1.04); }
+  .bingo button.sq.on{ background:var(--rose); color:#fff; border-color:var(--barn-dark); font-weight:600; }
+  .bingo button.sq.free{ background:var(--gold); color:#2C2A24; font-weight:700; border-color:#B7893A; }
+  .bingo button.sq.win{ background:var(--teal); border-color:#2d6e6b; color:#fff; }
+  .bingo-msg{ text-align:center; margin-top:18px; font-family:'Fraunces',serif; font-size:24px; color:var(--rose); min-height:34px; }
+  @media (max-width:560px){ .bingo{ gap:5px; } .bingo button.sq{ font-size:9.5px; padding:2px; border-radius:7px; overflow-wrap:anywhere; hyphens:auto; } }
 </style>
 </head>
 <body>
@@ -348,6 +379,7 @@
   <a href="#fredagskveld">Fredag 13.</a>
   <a href="#overnatting">Overnatting</a>
   <a href="#antrekk">Antrekk</a>
+  <a href="#bingo">Bingo</a>
   <a href="#onskeliste">Ønskeliste</a>
 </nav>
 
@@ -358,6 +390,7 @@
     <div class="eyebrow">Vi gifter oss</div>
     <h1>Edvin <em>&amp;</em> Lene</h1>
     <div class="datestrip">14. august 2027 &nbsp;·&nbsp; Solbakken Gard, Haugesund</div>
+    <div class="countdown" id="countdown" aria-live="polite"></div>
   </div>
   <div class="scrolldown">Scroll ↓</div>
 </div>
@@ -425,6 +458,7 @@
         <h3>Finn frem</h3>
         <p>Solbakken Gard ligger kort vei fra Haugesund. Bruk lenken under for å åpne stedet direkte i Google Maps og få veibeskrivelse fra der du kommer fra.</p>
         <p><a href="https://www.google.com/maps/place/Solbakken+Gard/@59.3800628,5.3446885,335m/data=!3m2!1e3!4b1!4m6!3m5!1s0x463b9f6a1a3a90a1:0x1071531a9932d83b!8m2!3d59.3800601!4d5.3472634!16s%2Fg%2F11f04pf2q6" target="_blank" rel="noopener">Se på kart i Google Maps →</a></p>
+        <p>Adresse: Spannaveien 532, 5546 Røyksund</p>
         <p>Les mer om stedet: <a href="https://solbakkenopplevelser.no/" target="_blank" rel="noopener">solbakkenopplevelser.no</a> · <a href="https://solbakkenopplevelser.no/laven/" target="_blank" rel="noopener">Låven</a></p>
         <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
           <a class="btn" href="https://www.google.com/maps/place/Solbakken+Gard/@59.3800628,5.3446885,335m/data=!3m2!1e3!4b1!4m6!3m5!1s0x463b9f6a1a3a90a1:0x1071531a9932d83b!8m2!3d59.3800601!4d5.3472634!16s%2Fg%2F11f04pf2q6" target="_blank" rel="noopener">Åpne i Google Maps</a>
@@ -486,6 +520,30 @@
   </div>
 </section>
 
+<section class="tight" id="bingo">
+  <div class="wrap">
+    <div class="kicker">Lek med oss</div>
+    <h2 class="section-title">Brudebingo</h2>
+    <p class="lede">Trykk på rutene når du ser det skje i løpet av bryllupet. Fem på rad, loddrett, vannrett eller diagonalt, gir bingo! Alle får sitt eget tilfeldige brett.</p>
+    <div class="bingo" id="bingo-board" role="grid" aria-label="Brudebingo"></div>
+    <p class="bingo-msg" id="bingo-msg" aria-live="polite"></p>
+    <div style="text-align:center; margin-top:18px;">
+      <button class="btn" id="bingo-new" type="button">Nytt brett</button>
+    </div>
+  </div>
+</section>
+
+<section class="tight" id="kalender">
+  <div class="wrap">
+    <div class="kicker">Ikke glem det</div>
+    <h2 class="section-title">Legg det i kalenderen</h2>
+    <p class="lede">Last ned en kalenderfil, så ligger både fredagssamlingen og bryllupsdagen klare i telefonen din.</p>
+    <div style="text-align:center;">
+      <a class="btn" id="ics-link" href="#kalender" download="edvin-og-lene-bryllup.ics">Legg til i kalender</a>
+    </div>
+  </div>
+</section>
+
 <section class="tight" id="onskeliste">
   <div class="wrap">
     <div class="kicker">Gaver</div>
@@ -504,5 +562,63 @@
   <p class="heart">EDVIN &amp; LENE</p>
 </footer>
 
+
+<script>
+(function(){
+  // Nedtelling
+  var el=document.getElementById('countdown');
+  if(el){
+    var d=Math.ceil((new Date(2027,7,14)-new Date())/86400000);
+    el.textContent = d>1 ? 'Om '+d+' dager' : d===1 ? 'I morgen!' : d===0 ? 'I dag!' : '';
+  }
+  // Brudebingo
+  var items=["Noen gråter av glede","Brudeparet ler midt i vielsen","En tale som drar over tiden","Noen nevner turene deres","Tale med barndomshistorie","Brudeparet kysser","Gruppebilde av gjestene","Noen sier «skål» for tidlig","Første dans","Noen nevner topptur eller sykkel","Barn som danser","Noen filmer med mobilen","Kaken skjæres","Noen kommer for sent","Gjestene synger sammen","Noen har på seg noe rødt","Solen skinner","Det regner","Noen danser på låven","Noen spør «hvem blir neste?»","Noen går seg bort på gården","Ukjent slektning gir en stor klem","Noen tar siste dansen","Fest langt etter midnatt"];
+  var board=document.getElementById('bingo-board'), msg=document.getElementById('bingo-msg');
+  if(!board) return;
+  var state;
+  function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+  var lines=[];
+  for(var r=0;r<5;r++){ var row=[],col=[]; for(var c=0;c<5;c++){ row.push(r*5+c); col.push(c*5+r); } lines.push(row,col); }
+  lines.push([0,6,12,18,24],[4,8,12,16,20]);
+  function check(){
+    var won=false;
+    var sq=board.children;
+    for(var i=0;i<25;i++) sq[i].classList.remove('win');
+    lines.forEach(function(l){ if(l.every(function(i){return state[i];})){ won=true; l.forEach(function(i){ sq[i].classList.add('win'); }); } });
+    msg.textContent = won ? 'BINGO! 🎉' : '';
+  }
+  function build(){
+    var picks=shuffle(items.slice()).slice(0,24);
+    picks.splice(12,0,'FRI');
+    state=picks.map(function(t){return t==='FRI';});
+    board.innerHTML='';
+    picks.forEach(function(t,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='sq'+(t==='FRI'?' free on':''); b.textContent=t==='FRI'?'FRI RUTE':t;
+      b.setAttribute('aria-pressed',state[i]);
+      if(t!=='FRI') b.addEventListener('click',function(){ state[i]=!state[i]; b.classList.toggle('on',state[i]); b.setAttribute('aria-pressed',state[i]); check(); });
+      board.appendChild(b);
+    });
+    msg.textContent='';
+  }
+  document.getElementById('bingo-new').addEventListener('click',build);
+  build();
+
+  // Kalenderfil
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Edvin og Lene//Bryllup//NO',
+   'BEGIN:VEVENT','UID:fredag-2027@edvin-lene','DTSTAMP:20261102T000000Z','DTSTART;VALUE=DATE:20270813','DTEND;VALUE=DATE:20270814','SUMMARY:Samling fredag – Edvin & Lene','LOCATION:Solbakken Gard\\, Spannaveien 532\\, 5546 Røyksund','END:VEVENT',
+   'BEGIN:VEVENT','UID:bryllup-2027@edvin-lene','DTSTAMP:20261102T000000Z','DTSTART;VALUE=DATE:20270814','DTEND;VALUE=DATE:20270815','SUMMARY:Bryllupet til Edvin & Lene','LOCATION:Solbakken Gard\\, Spannaveien 532\\, 5546 Røyksund','END:VEVENT',
+   'END:VCALENDAR'].join('\r\n');
+  var link=document.getElementById('ics-link');
+  if(link) link.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+
+  // Myk innkjøring
+  var secs=document.querySelectorAll('section .wrap');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:0.08});
+    secs.forEach(function(w){ w.classList.add('reveal'); io.observe(w); });
+  }
+})();
+</script>
 </body>
 </html>
